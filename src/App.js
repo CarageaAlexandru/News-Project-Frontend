@@ -20,7 +20,7 @@ function App() {
 						element={<SingleArticleCard />}
 					></Route>
 					<Route
-						path="/api/articles/:topic"
+						path="/api/articles/topic/:topic"
 						element={<TopicsCard />}
 					></Route>
 				</Routes>
