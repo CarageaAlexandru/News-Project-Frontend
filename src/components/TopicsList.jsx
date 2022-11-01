@@ -1,12 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 export default function TopicsList() {
 	const [topics, setTopics] = useState([]);
-
-	console.log("topics: ", topics);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -23,9 +20,6 @@ export default function TopicsList() {
 			<NavLink key={topic.slug} to={`/api/articles/${topic.slug}`}>
 				{topic.slug}
 			</NavLink>
-			// <Nav.Link as={Link} to="/contact">
-			// 	anywords
-			// </Nav.Link>
 		);
 	});
 	return topicsArray;

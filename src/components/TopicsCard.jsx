@@ -8,9 +8,7 @@ import { getDay, getHour } from "../Utils/utils";
 
 const TopicsCard = () => {
 	const [articles, setArticles] = useState({});
-	console.log("articles: ", articles);
 	const slug = useParams();
-	console.log("slug: ", slug.topic);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -26,7 +24,6 @@ const TopicsCard = () => {
 	const articlesByTopic = articles.filter((article) => {
 		return article.topic === slug.topic;
 	});
-	console.log("articlesByTopic: ", articlesByTopic);
 	return (
 		<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-4 gap-4">
 			{articlesByTopic.map((article) => {

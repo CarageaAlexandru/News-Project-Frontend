@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import React from "react";
 import TopicsList from "./TopicsList";
@@ -30,7 +30,6 @@ const NavigationBar = () => {
 						Articles
 					</Link>
 				</Nav>
-				{/* topic navigate - populate with valid topics */}
 				<Dropdown>
 					<Dropdown.Toggle variant="success" id="dropdown-basic">
 						Topics

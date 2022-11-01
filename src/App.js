@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-import TopicCard from "./components/TopicsCard";
+import TopicsCard from "./components/TopicsCard";
 
 function App() {
 	return (
@@ -16,7 +16,7 @@ function App() {
 					<Route path="/articles" element={<Articles />}></Route>
           <Route
 						path="/api/articles/:topic"
-						element={<TopicCard />}
+						element={<TopicsCard />}
 					></Route>
 				</Routes>
 			</div>
