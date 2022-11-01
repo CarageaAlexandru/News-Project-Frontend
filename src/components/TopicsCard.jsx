@@ -8,25 +8,24 @@ import { getDay, getHour } from "../Utils/utils";
 
 const TopicsCard = () => {
 	const [articles, setArticles] = useState({});
+
 	const slug = useParams();
 	const [loading, setLoading] = useState(true);
-
 	useEffect(() => {
-		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/articles`)
+		fetch(
+			`https://caragea-nc-news-backend.herokuapp.com/api/articles?topic=${slug.topic}`
+		)
 			.then((response) => response.json())
 			.then(({ articles }) => {
 				setArticles(articles);
 				setLoading(false);
 			});
-	}, []);
+	}, [slug]);
 	if (loading) return <p>Loading...</p>;
 
-	const articlesByTopic = articles.filter((article) => {
-		return article.topic === slug.topic;
-	});
 	return (
 		<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-4 gap-4">
-			{articlesByTopic.map((article) => {
+			{articles.map((article) => {
 				const day = getDay(article.created_at);
 				const hour = getHour(article.created_at);
 				return (
