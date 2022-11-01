@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export default function TopicsList() {
 	const [topics, setTopics] = useState([]);
@@ -15,11 +16,13 @@ export default function TopicsList() {
 			});
 	}, []);
 	if (loading) return <p>Loading...</p>;
-	const topicsArray = topics.map((topic) => {
+	const topicsArray = topics.map((topic, index) => {
 		return (
-			<NavLink key={topic.slug} to={`/api/articles/${topic.slug}`}>
-				{topic.slug}
-			</NavLink>
+			<Dropdown.Item key={index}>
+				<NavLink key={topic.slug} to={`/api/articles/${topic.slug}`}>
+					{topic.slug}
+				</NavLink>
+			</Dropdown.Item>
 		);
 	});
 	return topicsArray;

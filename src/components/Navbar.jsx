@@ -35,9 +35,7 @@ const NavigationBar = () => {
 						Topics
 					</Dropdown.Toggle>
 					<Dropdown.Menu>
-						<Dropdown.Item>
-							<TopicsList />
-						</Dropdown.Item>
+						<TopicsList />
 					</Dropdown.Menu>
 				</Dropdown>
 			</Container>
