@@ -7,7 +7,6 @@ import { getDay, getHour } from "../Utils/utils";
 
 const Articles = () => {
 	const [articles, setArticles] = useState({});
-	console.log("articles: ", articles);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -26,15 +25,21 @@ const Articles = () => {
 				const day = getDay(article.created_at);
 				const hour = getHour(article.created_at);
 				return (
-					<Card style={{ width: "18rem" }} className="text-primary" key={article.article_id}>
-						<Card.Body >
+					<Card
+						style={{ width: "18rem" }}
+						className="text-primary"
+						key={article.article_id}
+					>
+						<Card.Body>
 							<Card.Title>{article.title}</Card.Title>
 							<Card.Subtitle className="mb-2 text-muted">
 								By {article.author}
 							</Card.Subtitle>
 						</Card.Body>
 						<ListGroup className="list-group-flush">
-							<ListGroup.Item>Created at: {day} : {hour}</ListGroup.Item>
+							<ListGroup.Item>
+								Created at: {day} : {hour}
+							</ListGroup.Item>
 							<ListGroup.Item>
 								Coment count: {article.comment_count}
 							</ListGroup.Item>

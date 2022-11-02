@@ -6,6 +6,8 @@ import Placeholder from "react-bootstrap/Placeholder";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getDay, getHour } from "../Utils/utils";
+// import Button from "react-bootstrap/Button";
+import Vote from "./Vote";
 
 const SingleArticleCard = () => {
 	const [singleArticle, setSingleArticle] = useState({});
@@ -71,7 +73,7 @@ const SingleArticleCard = () => {
 								Coment count: {comment_count}
 							</ListGroup.Item>
 							<ListGroup.Item>Topic: {topic}</ListGroup.Item>
-							<ListGroup.Item>Votes: {votes}</ListGroup.Item>
+							<Vote votes={votes} article_id={article_id} />
 							<ListGroup.Item>
 								<Link to={`/articles`}>
 									Back to all articles
