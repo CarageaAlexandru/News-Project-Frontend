@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
@@ -24,14 +24,14 @@ const Vote = ({ article_id, votes }) => {
 					"Content-type": "application/json; charset=UTF-8",
 				},
 			}
-		).catch((error) => {
-			console.log("error: ", error);
-			setVote((currentVotes) => currentVotes - increment);
-			setError(error);
+		).then((response) => {
+			if (response.status >= 400) {
+				setError("Sorry, something went wrong, please try again");
+			}
+			response.json();
 		});
 	}
 	if (error) return <p>{error}</p>;
-	console.log(error);
 	return (
 		<div>
 			<ListGroup.Item>
