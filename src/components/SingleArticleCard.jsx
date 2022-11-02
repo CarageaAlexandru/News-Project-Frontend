@@ -8,6 +8,7 @@ import { useParams, Link } from "react-router-dom";
 import { getDay, getHour } from "../Utils/utils";
 // import Button from "react-bootstrap/Button";
 import Vote from "./Vote";
+import Comments from "./Comments";
 
 const SingleArticleCard = () => {
 	const [singleArticle, setSingleArticle] = useState({});
@@ -50,7 +51,7 @@ const SingleArticleCard = () => {
 	return (
 		<div className="container">
 			<Stack gap={3}>
-				<div className="bg-light border">
+				<div className="bg-light border container">
 					<Card
 						style={{ width: "18rem" }}
 						className="text-dark d-inline"
@@ -82,8 +83,10 @@ const SingleArticleCard = () => {
 						</ListGroup>
 					</Card>
 				</div>
-				<div className="bg-light border">Second item</div>
-				<div className="bg-light border">Third item</div>
+				<div className="bg-light border">Post comment will go here</div>
+				<div className="bg-light border">
+					<Comments article_id={article_id} />
+				</div>
 			</Stack>
 		</div>
 	);
