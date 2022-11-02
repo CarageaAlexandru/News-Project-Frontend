@@ -19,7 +19,10 @@ export default function TopicsList() {
 	const topicsArray = topics.map((topic, index) => {
 		return (
 			<Dropdown.Item key={index}>
-				<NavLink key={topic.slug} to={`/api/articles/${topic.slug}`}>
+				<NavLink
+					key={topic.slug}
+					to={`/api/articles/topic/${topic.slug}`}
+				>
 					{topic.slug}
 				</NavLink>
 			</Dropdown.Item>

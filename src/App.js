@@ -5,6 +5,7 @@ import NavigationBar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
 import TopicsCard from "./components/TopicsCard";
+import SingleArticleCard from "./components/SingleArticleCard";
 
 function App() {
 	return (
@@ -14,8 +15,12 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/articles" element={<Articles />}></Route>
-          <Route
-						path="/api/articles/:topic"
+					<Route
+						path="/api/articles/:article_id"
+						element={<SingleArticleCard />}
+					></Route>
+					<Route
+						path="/api/articles/topic/:topic"
 						element={<TopicsCard />}
 					></Route>
 				</Routes>
