@@ -25,6 +25,9 @@ const NavigationBar = () => {
 					<Link to="/articles" className="nav-link">
 						Articles
 					</Link>
+					<Link to="/users" className="nav-link">
+						Users
+					</Link>
 				</Nav>
 			</Container>
 		</Navbar>
