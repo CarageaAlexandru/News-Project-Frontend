@@ -6,7 +6,6 @@ import Placeholder from "react-bootstrap/Placeholder";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getDay, getHour } from "../Utils/utils";
-// import Button from "react-bootstrap/Button";
 import Vote from "./Vote";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
@@ -14,6 +13,7 @@ import PostComment from "./PostComment";
 const SingleArticleCard = () => {
 	const [comments, setComments] = useState([]);
 	const [singleArticle, setSingleArticle] = useState({});
+	const [refreshComments, setRefreshComments] = useState(false);
 	const [refreshArticles, setRefreshArticles] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const { article_id } = useParams();
@@ -32,7 +32,6 @@ const SingleArticleCard = () => {
 				setLoading(false);
 			});
 	}, [article_id]);
-
 	if (loading)
 		return (
 			<div className="d-flex justify-content-around">
@@ -51,6 +50,16 @@ const SingleArticleCard = () => {
 				</Card>
 			</div>
 		);
+
+	const handleDelete = (comment_id) => {
+		const url = ` https://caragea-nc-news-backend.herokuapp.com/api/comments/${comment_id}`;
+		fetch(url, {
+			method: "DELETE",
+		}).then((response) => {
+			setRefreshComments(!refreshComments);
+			alert("Delete Successful");
+		});
+	};
 
 	const day = getDay(created_at);
 	const hour = getHour(created_at);
@@ -103,6 +112,8 @@ const SingleArticleCard = () => {
 						setComments={setComments}
 						comments={comments}
 						refreshArticles={refreshArticles}
+						refreshComments={refreshComments}
+						handleDelete={handleDelete}
 					/>
 				</div>
 			</Stack>

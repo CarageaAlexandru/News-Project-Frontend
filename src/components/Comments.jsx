@@ -2,8 +2,16 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
 import { getDay, getHour } from "../Utils/utils";
+import Button from "react-bootstrap/Button";
 
-const Comments = ({ article_id, comments, setComments, refreshArticles }) => {
+const Comments = ({
+	article_id,
+	comments,
+	setComments,
+	refreshArticles,
+	refreshComments,
+	handleDelete,
+}) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,8 +22,9 @@ const Comments = ({ article_id, comments, setComments, refreshArticles }) => {
 				setComments(comments);
 				setLoading(false);
 			});
-	}, [refreshArticles]);
+	}, [refreshArticles, refreshComments]);
 	if (loading) return <p>Loading ...</p>;
+
 	return (
 		<div className="container">
 			{comments.map((comment) => {
@@ -32,6 +41,14 @@ const Comments = ({ article_id, comments, setComments, refreshArticles }) => {
 						<Card.Footer className="text-muted">
 							{day} : {hour} {"Votes :"} {votes}
 						</Card.Footer>
+						<Button
+							onClick={() => handleDelete(comment_id)}
+							variant="primary"
+							type="submit"
+							className="bg-primary"
+						>
+							Delete
+						</Button>
 					</Card>
 				);
 			})}

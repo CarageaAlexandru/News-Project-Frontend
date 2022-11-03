@@ -8,7 +8,6 @@ const PostComment = ({ article_id, setComments, refresh }) => {
 	const [newComment, setNewComment] = useState({});
 	const [status, setStatus] = useState("");
 	const [message, setMessage] = useState("");
-	console.log("newComment: ", newComment);
 	const [error, setError] = useState(null);
 
 	const handleSubmit = (event) => {

@@ -1,12 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
-
 import { Link } from "react-router-dom";
-
 import React from "react";
-import TopicsList from "./TopicsList";
 
 const NavigationBar = () => {
 	return (
@@ -30,14 +26,6 @@ const NavigationBar = () => {
 						Articles
 					</Link>
 				</Nav>
-				<Dropdown>
-					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Topics
-					</Dropdown.Toggle>
-					<Dropdown.Menu>
-						<TopicsList />
-					</Dropdown.Menu>
-				</Dropdown>
 			</Container>
 		</Navbar>
 	);

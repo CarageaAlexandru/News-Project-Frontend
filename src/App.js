@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-import TopicsCard from "./components/TopicsCard";
 import SingleArticleCard from "./components/SingleArticleCard";
 
 function App() {
@@ -18,10 +17,6 @@ function App() {
 					<Route
 						path="/api/articles/:article_id"
 						element={<SingleArticleCard />}
-					></Route>
-					<Route
-						path="/api/articles/topic/:topic"
-						element={<TopicsCard />}
 					></Route>
 				</Routes>
 			</div>
