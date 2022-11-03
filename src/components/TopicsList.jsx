@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
-export default function TopicsList() {
+export default function TopicsList({ setTopic, order, sort_by }) {
 	const [topics, setTopics] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -11,22 +11,24 @@ export default function TopicsList() {
 		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/topics`)
 			.then((response) => response.json())
 			.then(({ topics }) => {
-				setTopics(topics);
+				const allTopics = topics.map((topic) => topic.slug);
+				allTopics.unshift("All");
+				setTopics(allTopics);
 				setLoading(false);
 			});
 	}, []);
 	if (loading) return <p>Loading...</p>;
-	const topicsArray = topics.map((topic, index) => {
+	return topics.map((topic, index) => {
 		return (
 			<Dropdown.Item key={index}>
 				<NavLink
-					key={topic.slug}
-					to={`/api/articles/topic/${topic.slug}`}
+					onClick={(event) => setTopic(topic)}
+					key={topic}
+					to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 				>
-					{topic.slug}
+					{topic}
 				</NavLink>
 			</Dropdown.Item>
 		);
 	});
-	return topicsArray;
 }

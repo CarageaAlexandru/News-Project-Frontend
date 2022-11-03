@@ -5,23 +5,28 @@ import { useState, useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { getDay, getHour } from "../Utils/utils";
 import Dropdown from "react-bootstrap/Dropdown";
+import TopicsList from "./TopicsList";
 
 const Articles = () => {
 	const [articles, setArticles] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [sort_by, setSort_by] = useState("created_at");
 	const [order, setOrder] = useState("asc");
+	const [topic, setTopic] = useState("All");
 
 	useEffect(() => {
-		fetch(
-			`https://caragea-nc-news-backend.herokuapp.com/api/articles?sort_by=${sort_by}&order=${order}`
-		)
+		let path = `https://caragea-nc-news-backend.herokuapp.com/api/articles?sort_by=${sort_by}&order=${order}`;
+		if (topic !== "All") {
+			path += `&topic=${topic}`;
+		}
+
+		fetch(path)
 			.then((response) => response.json())
 			.then(({ articles }) => {
 				setArticles(articles);
 				setLoading(false);
 			});
-	}, [sort_by, order]);
+	}, [sort_by, order, topic]);
 	if (loading) return <p>Loading...</p>;
 
 	return (
@@ -33,7 +38,7 @@ const Articles = () => {
 				<Dropdown.Menu>
 					<Dropdown.Item>
 						<NavLink
-							to={`/articles?sort_by=${sort_by}`}
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 							onClick={(event) =>
 								setSort_by(event.target.text.toLowerCase())
 							}
@@ -43,7 +48,7 @@ const Articles = () => {
 					</Dropdown.Item>
 					<Dropdown.Item>
 						<NavLink
-							to={`/articles?sort_by=${sort_by}`}
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 							onClick={(event) => setSort_by("created_at")}
 						>
 							Date
@@ -68,7 +73,7 @@ const Articles = () => {
 				<Dropdown.Menu>
 					<Dropdown.Item>
 						<NavLink
-							to={`/articles?sort_by=${sort_by}&order=${order}`}
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 							onClick={(event) => setOrder("asc")}
 						>
 							Ascending
@@ -76,12 +81,24 @@ const Articles = () => {
 					</Dropdown.Item>
 					<Dropdown.Item>
 						<NavLink
-							to={`/articles?sort_by=${sort_by}&order=${order}`}
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 							onClick={(event) => setOrder("desc")}
 						>
 							Descending
 						</NavLink>
 					</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
+			<Dropdown className="d-inline-flex p-2 mt-2">
+				<Dropdown.Toggle variant="success" id="dropdown-basic">
+					Topics
+				</Dropdown.Toggle>
+				<Dropdown.Menu>
+					<TopicsList
+						setTopic={setTopic}
+						order={order}
+						sort_by={sort_by}
+					/>
 				</Dropdown.Menu>
 			</Dropdown>
 			{/* dropdown ends here */}
