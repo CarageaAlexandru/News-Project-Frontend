@@ -56,6 +56,9 @@ const SingleArticleCard = () => {
 		fetch(url, {
 			method: "DELETE",
 		}).then((response) => {
+			if (response.status >= 400) {
+				return alert("Sorry, something went wrong, please try again.");
+			}
 			setRefreshComments(!refreshComments);
 			alert("Delete Successful");
 		});
