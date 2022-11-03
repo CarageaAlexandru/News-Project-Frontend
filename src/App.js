@@ -15,6 +15,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/articles" element={<Articles />}></Route>
+					<Route path="/articles/:sort_by=" element={<Articles />}></Route>
 					<Route
 						path="/api/articles/:article_id"
 						element={<SingleArticleCard />}
