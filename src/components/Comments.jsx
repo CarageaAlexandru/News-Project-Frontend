@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import Vote from "./Vote";
 import { getDay, getHour } from "../Utils/utils";
 
-const Comments = ({ article_id }) => {
-	const [comments, setComments] = useState([]);
+const Comments = ({ article_id, comments, setComments, refreshArticles }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -13,11 +12,10 @@ const Comments = ({ article_id }) => {
 		fetch(url)
 			.then((response) => response.json())
 			.then(({ comments }) => {
-				console.log(comments);
 				setComments(comments);
 				setLoading(false);
 			});
-	}, [article_id]);
+	}, [refreshArticles]);
 	if (loading) return <p>Loading ...</p>;
 	return (
 		<div className="container">

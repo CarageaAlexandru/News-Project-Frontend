@@ -9,14 +9,20 @@ import { getDay, getHour } from "../Utils/utils";
 // import Button from "react-bootstrap/Button";
 import Vote from "./Vote";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 const SingleArticleCard = () => {
+	const [comments, setComments] = useState([]);
 	const [singleArticle, setSingleArticle] = useState({});
+	const [refreshArticles, setRefreshArticles] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const { article_id } = useParams();
 	const { id, author, body, comment_count, created_at, title, topic, votes } =
 		singleArticle;
 
+	function refresh() {
+		setRefreshArticles(!refreshArticles);
+	}
 	useEffect(() => {
 		const url = `https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}`;
 		fetch(url)
@@ -83,9 +89,21 @@ const SingleArticleCard = () => {
 						</ListGroup>
 					</Card>
 				</div>
-				<div className="bg-light border">Post comment will go here</div>
 				<div className="bg-light border">
-					<Comments article_id={article_id} />
+					<PostComment
+						article_id={article_id}
+						setComments={setComments}
+						comments={comments}
+						refresh={refresh}
+					/>
+				</div>
+				<div className="bg-light border">
+					<Comments
+						article_id={article_id}
+						setComments={setComments}
+						comments={comments}
+						refreshArticles={refreshArticles}
+					/>
 				</div>
 			</Stack>
 		</div>
