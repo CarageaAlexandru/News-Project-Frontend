@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
-import Vote from "./Vote";
 import { getDay, getHour } from "../Utils/utils";
 
 const Comments = ({ article_id, comments, setComments, refreshArticles }) => {
