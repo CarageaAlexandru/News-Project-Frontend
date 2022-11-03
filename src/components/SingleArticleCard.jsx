@@ -57,7 +57,7 @@ const SingleArticleCard = () => {
 			method: "DELETE",
 		}).then((response) => {
 			setRefreshComments(!refreshComments);
-			alert("Are you sure?")
+			alert("Delete Successful");
 		});
 	};
 
