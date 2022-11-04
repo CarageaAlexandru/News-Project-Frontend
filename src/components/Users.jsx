@@ -17,7 +17,6 @@ const Users = () => {
 		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/users`)
 			.then((response) => response.json())
 			.then(({ users }) => {
-				console.log(users);
 				setUsers(users);
 				setError(null);
 			})
@@ -36,13 +35,12 @@ const Users = () => {
 	}
 
 	return (
-		<Container>
-			<Row>
-				<Col>
-					<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-2 gap-4">
+		<Container  >
+			<Row className="r">
+				<Col >
+					<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-2 gap-4 justify-content-center">
 						{users.map((user) => {
 							const { username, name, avatar_url } = user;
-							// <h1>You are logged in as {user}</h1>;
 							return (
 								<Card
 									key={username}

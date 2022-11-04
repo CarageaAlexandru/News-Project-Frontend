@@ -22,7 +22,7 @@ function App() {
 				<UserContext.Provider value={loggedInValue}>
 					<NavigationBar />
 					<Routes>
-						<Route path="/" element={<Home />}></Route>
+						<Route path="/" element={<Articles />}></Route>
 						<Route path="/articles" element={<Articles />}></Route>
 						<Route path="/users" element={<Users />}></Route>
 						<Route

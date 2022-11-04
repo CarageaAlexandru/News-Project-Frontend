@@ -7,7 +7,6 @@ import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
 const PostComment = ({ article_id, setComments, refresh }) => {
-	const [username, setUsername] = useState({});
 	const [newComment, setNewComment] = useState({});
 	const [status, setStatus] = useState("");
 	const [message, setMessage] = useState("");
@@ -45,12 +44,7 @@ const PostComment = ({ article_id, setComments, refresh }) => {
 		<Form onSubmit={handleSubmit}>
 			<Form.Group className="mb-3" controlId="username">
 				<Form.Label>Username</Form.Label>
-				<Form.Control
-					disabled
-					type="text"
-					placeholder={loggedIn}
-					onChange={(event) => setUsername(event.target.value)}
-				/>
+				<Form.Control disabled type="text" placeholder={loggedIn} />
 			</Form.Group>
 			<Form.Group className="mb-3" controlId="commentBody">
 				<FloatingLabel
