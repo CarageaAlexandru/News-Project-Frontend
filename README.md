@@ -2,16 +2,16 @@
 
 NC News is an individual front end project which consolidates my understanding of making a C.R.U.D application from a front end perspective.
 
-Please find the link to the hosted version of this project here: "https://caragea-nc-news.netlify.app/"
+Please find the link to the hosted version of this project here: https://caragea-nc-news.netlify.app/
 
 It pulls together all the front-end skills, technologies and best practices I have learnt.
 
 This project makes API calls to a server I have created as part of my back end project.
 It uses HTTP request to interact with my backend, and HTTP response to update my UI accordingly.
 
-Please find the link to the hosted version of my back-end project here: "https://caragea-nc-news-backend.herokuapp.com/api"
+Please find the link to the hosted version of my back-end project here: https://caragea-nc-news-backend.herokuapp.com/api
 
-Please find the link to the back-end git repository here: "https://github.com/CarageaAlexandru/News-Project-Backend"
+Please find the link to the back-end git repository here: https://github.com/CarageaAlexandru/News-Project-Backend
 
 NC News is social news aggregation, web content rating, and discussion website.
 NC News has articles which are divided into topics.
