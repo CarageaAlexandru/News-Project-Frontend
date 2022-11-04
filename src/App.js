@@ -7,12 +7,19 @@ import Articles from "./components/Articles";
 import SingleArticleCard from "./components/SingleArticleCard";
 import Users from "./components/Users";
 import { UserContext } from "./components/UserContext";
+import { useState, useMemo } from "react";
 
 function App() {
+	const [loggedIn, setLoggedIn] = useState("Guest");
+	const loggedInValue = useMemo(
+		() => ({ loggedIn, setLoggedIn }),
+		[loggedIn, setLoggedIn]
+	);
+
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<UserContext.Provider>
+				<UserContext.Provider value={loggedInValue}>
 					<NavigationBar />
 					<Routes>
 						<Route path="/" element={<Home />}></Route>

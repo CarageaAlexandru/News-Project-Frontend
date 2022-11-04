@@ -9,10 +9,9 @@ import { UserContext } from "./UserContext";
 const Users = () => {
 	const initialState = "jessjelly";
 	const [users, setUsers] = useState(initialState);
-	const [loggedIn, setLoggedIn] = useContext(UserContext);
-	console.log("loggedIn: ", loggedIn);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const { setLoggedIn } = useContext(UserContext);
 
 	useEffect(() => {
 		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/users`)
@@ -28,16 +27,14 @@ const Users = () => {
 			.finally(() => {
 				setLoading(false);
 			});
-	}, [loggedIn]);
+	}, []);
 	if (error) {
 		return <p>Sorry, something went wrong, please try again</p>;
 	}
 	if (loading) {
 		return <p>Loading ...</p>;
 	}
-	if (loggedIn) {
-		return <p>Logged in as {loggedIn}</p>;
-	}
+
 	return (
 		<Container>
 			<Row>
@@ -45,7 +42,7 @@ const Users = () => {
 					<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-2 gap-4">
 						{users.map((user) => {
 							const { username, name, avatar_url } = user;
-							<h1>You are logged in as {user}</h1>;
+							// <h1>You are logged in as {user}</h1>;
 							return (
 								<Card
 									key={username}

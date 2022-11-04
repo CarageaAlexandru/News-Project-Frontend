@@ -3,9 +3,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import React from "react";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 const NavigationBar = () => {
-	
+	const { loggedIn } = useContext(UserContext);
+
 	return (
 		<Navbar bg="dark" variant="dark">
 			<Container>
@@ -30,7 +33,13 @@ const NavigationBar = () => {
 						Users
 					</Link>
 					<Navbar.Text>
-						Signed in as: <a href="/users">Mark Otto</a>
+						Signed in as:{" "}
+						<a href="/users">
+							{" "}
+							<Link to="/users">
+								{JSON.stringify(loggedIn, "Guest", 2)}
+							</Link>
+						</a>
 					</Navbar.Text>
 				</Nav>
 			</Container>
