@@ -1,8 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { getDay, getHour } from "../Utils/utils";
 import DeleteModal from "./DeleteModal";
+import { UserContext } from "./UserContext";
 
 const Comments = ({
 	article_id,
@@ -13,6 +15,7 @@ const Comments = ({
 	handleDelete,
 }) => {
 	const [loading, setLoading] = useState(true);
+	const { loggedIn } = useContext(UserContext);
 
 	useEffect(() => {
 		const url = `https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}/comments`;
@@ -41,10 +44,14 @@ const Comments = ({
 						<Card.Footer className="text-muted">
 							{day} : {hour} {"Votes :"} {votes}
 						</Card.Footer>
-						<DeleteModal
-							comment={comment}
-							handleDelete={handleDelete}
-						/>
+						{loggedIn === "Guest" ? (
+							<p>Please loggin to delete a comment</p>
+						) : (
+							<DeleteModal
+								comment={comment}
+								handleDelete={handleDelete}
+							/>
+						)}
 					</Card>
 				);
 			})}
