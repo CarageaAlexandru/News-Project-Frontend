@@ -31,7 +31,7 @@ const Articles = () => {
 
 	return (
 		<>
-			<Dropdown className="d-inline-flex p-2 mt-2">
+			<Dropdown className="d-inline-flex p-2 mt-2 ">
 				<Dropdown.Toggle variant="success" id="dropdown-basic">
 					Sort by
 				</Dropdown.Toggle>
@@ -44,6 +44,14 @@ const Articles = () => {
 							}
 						>
 							Votes
+						</NavLink>
+					</Dropdown.Item>
+					<Dropdown.Item>
+						<NavLink
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
+							onClick={(event) => setSort_by("comment_count")}
+						>
+							Comments
 						</NavLink>
 					</Dropdown.Item>
 					<Dropdown.Item>
@@ -102,7 +110,7 @@ const Articles = () => {
 				</Dropdown.Menu>
 			</Dropdown>
 			{/* dropdown ends here */}
-			<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-4 gap-4">
+			<div className="mt-2 ms-2 row row-cols-1 row-cols-md-2 g-4 gap-4 justify-content-center">
 				{articles.map((article) => {
 					const day = getDay(article.created_at);
 					const hour = getHour(article.created_at);

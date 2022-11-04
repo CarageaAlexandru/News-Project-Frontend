@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
 import { getDay, getHour } from "../Utils/utils";
-import Button from "react-bootstrap/Button";
+import DeleteModal from "./DeleteModal";
 
 const Comments = ({
 	article_id,
@@ -41,14 +41,10 @@ const Comments = ({
 						<Card.Footer className="text-muted">
 							{day} : {hour} {"Votes :"} {votes}
 						</Card.Footer>
-						<Button
-							onClick={() => handleDelete(comment_id)}
-							variant="primary"
-							type="submit"
-							className="bg-primary"
-						>
-							Delete
-						</Button>
+						<DeleteModal
+							comment={comment}
+							handleDelete={handleDelete}
+						/>
 					</Card>
 				);
 			})}
