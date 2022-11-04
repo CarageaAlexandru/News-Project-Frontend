@@ -22,7 +22,7 @@ const Comments = ({
 				setComments(comments);
 				setLoading(false);
 			});
-	}, [refreshArticles, refreshComments]);
+	}, [refreshArticles, refreshComments, article_id, setComments]);
 	if (loading) return <p>Loading ...</p>;
 
 	return (

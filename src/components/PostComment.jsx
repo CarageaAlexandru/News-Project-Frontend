@@ -27,14 +27,14 @@ const PostComment = ({ article_id, setComments, refresh }) => {
 		})
 			.then((response) => {
 				if (response.status >= 400) {
-					setError("Sorry, something went wrong, please try again");
+					setError("Sorry, something went wrong, please try again.");
 				}
 				return response.json();
 			})
 			.then(() => {
 				refresh();
 				setStatus("200");
-				setMessage("Thaks for leaving a comment");
+				setMessage("Thanks for leaving a comment.");
 			});
 	};
 	if (error) return <p>{error}</p>;
