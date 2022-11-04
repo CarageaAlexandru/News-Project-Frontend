@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 const NavigationBar = () => {
+	
 	return (
 		<Navbar bg="dark" variant="dark">
 			<Container>
@@ -28,6 +29,9 @@ const NavigationBar = () => {
 					<Link to="/users" className="nav-link">
 						Users
 					</Link>
+					<Navbar.Text>
+						Signed in as: <a href="/users">Mark Otto</a>
+					</Navbar.Text>
 				</Nav>
 			</Container>
 		</Navbar>

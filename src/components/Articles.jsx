@@ -49,6 +49,14 @@ const Articles = () => {
 					<Dropdown.Item>
 						<NavLink
 							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
+							onClick={(event) => setSort_by("comment_count")}
+						>
+							Comments
+						</NavLink>
+					</Dropdown.Item>
+					<Dropdown.Item>
+						<NavLink
+							to={`/articles?sort_by=${sort_by}&order=${order}&topic=${topic}`}
 							onClick={(event) => setSort_by("created_at")}
 						>
 							Date

@@ -1,14 +1,15 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { UserContext } from "./UserContext";
 
 const Users = () => {
 	const initialState = "jessjelly";
 	const [users, setUsers] = useState(initialState);
-	const [loggedIn, setLoggedIn] = useState(null);
+	const [loggedIn, setLoggedIn] = useContext(UserContext);
 	console.log("loggedIn: ", loggedIn);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
