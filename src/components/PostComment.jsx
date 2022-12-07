@@ -12,9 +12,10 @@ const PostComment = ({ article_id, setComments, refresh }) => {
 	const [message, setMessage] = useState("");
 	const [error, setError] = useState(null);
 	const { loggedIn } = useContext(UserContext);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const url = `https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}/comments`;
+		const url = `https://caragea-nc-news-backend.cyclic.app/api/articles/${article_id}/comments`;
 		fetch(url, {
 			method: "POST",
 			headers: {

@@ -18,7 +18,7 @@ const Comments = ({
 	const { loggedIn } = useContext(UserContext);
 
 	useEffect(() => {
-		const url = `https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}/comments`;
+		const url = `https://caragea-nc-news-backend.cyclic.app/api/articles/${article_id}/comments`;
 		fetch(url)
 			.then((response) => response.json())
 			.then(({ comments }) => {

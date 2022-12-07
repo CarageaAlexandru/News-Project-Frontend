@@ -14,7 +14,7 @@ const Users = () => {
 	const { setLoggedIn } = useContext(UserContext);
 
 	useEffect(() => {
-		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/users`)
+		fetch(`https://caragea-nc-news-backend.cyclic.app/api/users`)
 			.then((response) => response.json())
 			.then(({ users }) => {
 				setUsers(users);

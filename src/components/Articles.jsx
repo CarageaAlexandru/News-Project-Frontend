@@ -15,7 +15,7 @@ const Articles = () => {
 	const [topic, setTopic] = useState("All");
 
 	useEffect(() => {
-		let path = `https://caragea-nc-news-backend.herokuapp.com/api/articles?sort_by=${sort_by}&order=${order}`;
+		let path = `https://caragea-nc-news-backend.cyclic.app/api/articles?sort_by=${sort_by}&order=${order}`;
 		if (topic !== "All") {
 			path += `&topic=${topic}`;
 		}

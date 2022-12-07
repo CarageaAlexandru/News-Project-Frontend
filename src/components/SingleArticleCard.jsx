@@ -24,7 +24,7 @@ const SingleArticleCard = () => {
 		setRefreshArticles(!refreshArticles);
 	}
 	useEffect(() => {
-		const url = `https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}`;
+		const url = `https://caragea-nc-news-backend.cyclic.app/api/articles/${article_id}`;
 		fetch(url)
 			.then((response) => response.json())
 			.then(({ article }) => {
@@ -52,7 +52,7 @@ const SingleArticleCard = () => {
 		);
 
 	const handleDelete = (comment_id) => {
-		const url = ` https://caragea-nc-news-backend.herokuapp.com/api/comments/${comment_id}`;
+		const url = `https://caragea-nc-news-backend.cyclic.app/api/comments/${comment_id}`;
 		fetch(url, {
 			method: "DELETE",
 		}).then((response) => {

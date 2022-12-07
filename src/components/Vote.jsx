@@ -14,7 +14,7 @@ const Vote = ({ article_id, votes }) => {
 		});
 		setError(null);
 		return fetch(
-			`https://caragea-nc-news-backend.herokuapp.com/api/articles/${article_id}`,
+			`https://caragea-nc-news-backend.cyclic.app/api/articles/${article_id}`,
 			{
 				method: "PATCH",
 				body: JSON.stringify({

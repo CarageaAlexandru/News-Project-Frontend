@@ -8,7 +8,7 @@ export default function TopicsList({ setTopic, order, sort_by }) {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch(`https://caragea-nc-news-backend.herokuapp.com/api/topics`)
+		fetch(`https://caragea-nc-news-backend.cyclic.app/api/topics`)
 			.then((response) => response.json())
 			.then(({ topics }) => {
 				const allTopics = topics.map((topic) => topic.slug);
