@@ -9,7 +9,7 @@ It pulls together all the front-end skills, technologies and best practices I ha
 This project makes API calls to a server I have created as part of my back end project.
 It uses HTTP request to interact with my backend, and HTTP response to update my UI accordingly.
 
-Please find the link to the hosted version of my back-end project here: https://caragea-nc-news-backend.herokuapp.com/api
+Please find the link to the hosted version of my back-end project here: (https://caragea-nc-news-backend.cyclic.app/api)
 
 Please find the link to the back-end git repository here: https://github.com/CarageaAlexandru/News-Project-Backend
 
